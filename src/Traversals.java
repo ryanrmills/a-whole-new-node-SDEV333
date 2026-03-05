@@ -39,5 +39,33 @@ public class Traversals {
     child3_1.children = new ArrayList<>();
     child3_1.children.add(child3_1_1);
     child3_1.children.add(child3_1_2);
+
+    // preorder(root);
+    int biggie = max(root);
+    System.out.println(biggie);
+  }
+
+  static void preorder(Node<?> node){
+    if (node == null) return;
+
+    System.out.println(node.value);
+    
+    for (Node<?> child : node.children){
+      preorder(child);
+    }
+  }
+
+  static int max(Node<Integer> node){
+    if (node == null) return Integer.MIN_VALUE;
+
+    int maxVal = node.value;
+
+    for (Node<Integer> child : node.children){
+      maxVal = max(child) > maxVal ? max(child) : maxVal;
+    }
+
+    return maxVal;
   }
 }
+
+
